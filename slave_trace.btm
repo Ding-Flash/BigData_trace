@@ -56,7 +56,7 @@ CLASS org.apache.spark.deploy.SparkSubmit
 METHOD main
 AT ENTRY
 IF true
-DO traceOpen("org.apache.spark.deploy.SparkSubmit","/home/yangs/Bigdata/qwc_trace/tracelog");
+DO traceOpen("org.apache.spark.deploy.SparkSubmit","$BigData/tracelog");
    traceln("org.apache.spark.deploy.SparkSubmit","BR:Entering Sparksubmit main. time:" + System.currentTimeMillis() + " thread id: " + Thread.currentThread().getId() + " name : " + Thread.currentThread().getName());
    traceClose("org.apache.spark.deploy.SparkSubmit");
 ENDRULE
@@ -66,7 +66,7 @@ CLASS org.apache.spark.deploy.SparkSubmit
 METHOD main
 AT EXIT
 IF true
-DO traceOpen("org.apache.spark.deploy.SparkSubmit","/home/yangs/Bigdata/qwc_trace/tracelog"); 
+DO traceOpen("org.apache.spark.deploy.SparkSubmit","$BigData/tracelog"); 
    traceln("org.apache.spark.deploy.SparkSubmit","BR:Ending Sparksubmit main. time:" + System.currentTimeMillis() + " thread id: " + Thread.currentThread().getId() + " name : " + Thread.currentThread().getName());
    traceClose("org.apache.spark.deploy.SparkSubmit");
 ENDRULE
@@ -167,7 +167,7 @@ CLASS ResultTask
 METHOD runTask
 AT ENTRY
 IF true
-DO traceOpen("ResultTask" + Thread.currentThread().getId(),"/home/yangs/Bigdata/qwc_trace/task_tracelog");
+DO traceOpen("ResultTask" + Thread.currentThread().getId(),"$BigData/task_tracelog");
    traceln("ResultTask"+Thread.currentThread().getId(),"BR: Starting a task id: " + Thread.currentThread().getId() + " time: " + System.currentTimeMillis    ());
    traceClose("ResultTask" + Thread.currentThread().getId());
 ENDRULE
@@ -177,7 +177,7 @@ CLASS ResultTask
 METHOD runTask
 AT EXIT
 IF true
-DO traceOpen("ResultTask" + Thread.currentThread().getId(),"/home/yangs/Bigdata/qwc_trace/task_tracelog");
+DO traceOpen("ResultTask" + Thread.currentThread().getId(),"$BigData/task_tracelog");
    traceln("ResultTask"+Thread.currentThread().getId(),"BR: Ending a task id: " + Thread.currentThread().getId() + " time: " + System.currentTimeMillis    ());
    traceClose("ResultTask" + Thread.currentThread().getId());
 ENDRULE
@@ -186,7 +186,7 @@ ENDRULE
 #CLASS ShuffleMapTask
 #AT ENTRY
 #IF true
-#DO traceOpen("ShuffleTask" + Thread.currentThread().getId(),"/home/yangs/Bigdata/qwc_trace/task_tracelog");
+#DO traceOpen("ShuffleTask" + Thread.currentThread().getId(),"$BigData/task_tracelog");
 #   traceln("ShuffleTask"+Thread.currentThread().getId(),"BR: Starting a shuffle task id: " + Thread.currentThread().getId() + " time: " + System.currentTimeMillis    ());
 #   traceClose("ShuffleTask" + Thread.currentThread().getId());
 #ENDRULE
@@ -195,7 +195,7 @@ ENDRULE
 #CLASS ShuffleMapTask
 #AT EXIT
 #IF true
-#DO traceOpen("ShuffleTask" + Thread.currentThread().getId(),"/home/yangs/Bigdata/qwc_trace/task_tracelog");
+#DO traceOpen("ShuffleTask" + Thread.currentThread().getId(),"$BigData/task_tracelog");
 #   traceln("ShuffleTask"+Thread.currentThread().getId(),"BR: Ending a shuffle task id: " + Thread.currentThread().getId() + " time: " + System.currentTimeMillis    ());
 #   traceClose("ShuffleTask" + Thread.currentThread().getId());
 #ENDRULE
@@ -221,7 +221,7 @@ CLASS ^org.apache.spark.rdd.RDD
 METHOD compute
 AT ENTRY
 IF true
-DO traceOpen("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId(),"/home/yangs/Bigdata/qwc_trace/tracelog");
+DO traceOpen("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId(),"$BigData/tracelog");
    traceln("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId(),"BR: actural rdd computing thread id: " + Thread.currentThread().getId() + " time: " + System.currentTimeMillis() + " class: " + $0);
    traceClose("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId());
 ENDRULE
@@ -231,7 +231,7 @@ CLASS ^org.apache.spark.rdd.RDD
 METHOD compute
 AT EXIT
 IF true
-DO  traceOpen("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId(),"/home/yangs/Bigdata/qwc_trace/tracelog"); 
+DO  traceOpen("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId(),"$BigData/tracelog"); 
     traceln("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId(),"BR: actural rdd computing end thread id: " + Thread.currentThread().getId() + " time: " + System.currentTimeMillis() + " class: " + $0);
     traceClose("^org.apache.spark.rdd.RDD"+Thread.currentThread().getId());
 ENDRULE
